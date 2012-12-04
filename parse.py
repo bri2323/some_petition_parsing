@@ -2,6 +2,7 @@ import os
 import json
 import sys
 from BeautifulSoup import BeautifulSoup
+from datetime import datetime
 
 all_json = []
 
@@ -23,4 +24,4 @@ for number, fileu in enumerate(sorted(os.listdir("dumps"), key=lambda x: int(x))
     sys.stdout.write("%s/%s\r" % (number, total_len))
     sys.stdout.flush()
 
-open("all_signatures.json", "w").write(json.dumps(all_json))
+open("all_signatures-%s.json" % datetime.now().strftime('%F-%H-%M'), "w").write(json.dumps(all_json))
